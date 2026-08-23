@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+:root { --ink: #111111; --paper: #FFFFFF; --red: #E10600; --grey: #8A8A8A; --rule: #DDDDDD; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: "IBM Plex Mono", ui-monospace, monospace; }
+a { color: inherit; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 20px 18px 80px; }
+.top { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; color: var(--grey); text-transform: uppercase; letter-spacing: .08em; }
+.top b { color: var(--ink); font-weight: 500; }
+.say { margin: 56px 0 12px; font-family: "Archivo Black", Impact, sans-serif; font-size: clamp(34px, 8.5vw, 64px); line-height: 1.02; letter-spacing: -.01em; word-wrap: break-word; text-decoration: none; display: block; }
+.say a { text-decoration: underline; text-decoration-thickness: .08em; text-underline-offset: .12em; }
+.stamp { display: inline-block; border: 3px solid var(--red); color: var(--red); padding: 4px 10px; font-weight: 500; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; transform: rotate(-3deg); margin: 6px 0 0 2px; }
+.lock { margin-top: 10px; font-size: 13px; color: var(--red); }
+.form { margin-top: 44px; border-top: 3px solid var(--ink); padding-top: 18px; }
+.form label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--grey); margin-bottom: 6px; }
+.form textarea, .form input { width: 100%; font: inherit; font-size: 16px; padding: 12px; border: 2px solid var(--ink); background: var(--paper); color: var(--ink); border-radius: 0; outline: none; }
+.form textarea:focus, .form input:focus { border-color: var(--red); }
+.count { text-align: right; font-size: 12px; color: var(--grey); margin: 4px 0 14px; }
+.count.over { color: var(--red); }
+.row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.btn { flex: 1; min-width: 140px; font: inherit; font-size: 15px; font-weight: 500; padding: 14px; border: 2px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; border-radius: 0; }
+.btn.alt { background: var(--paper); color: var(--ink); }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.err { color: var(--red); font-size: 13px; margin-top: 10px; }
+.hint { font-size: 12px; color: var(--grey); margin-top: 10px; line-height: 1.5; }
+.grave { margin-top: 64px; }
+.grave h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--grey); font-weight: 400; margin: 0 0 14px; }
+.dead { border-top: 1px solid var(--rule); padding: 12px 0; display: flex; gap: 14px; align-items: baseline; }
+.dead .t { flex: 1; text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; color: #555; font-size: 15px; line-height: 1.45; }
+.dead .p { color: var(--ink); font-size: 13px; white-space: nowrap; }
+.dead .a { color: var(--grey); font-size: 11px; white-space: nowrap; }
+.foot { margin-top: 60px; font-size: 12px; color: var(--grey); }
+.foot a { margin-right: 14px; }
+@media (prefers-reduced-motion: no-preference) { .say { animation: in .35s ease-out; } @keyframes in { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: none;} } }
+.linkline { font-size: 13px; margin: 10px 0 0; } .linkline a { color: var(--grey); text-decoration: underline; }
+.alive { display:inline-block; margin-left: 12px; font-size: 12px; color: var(--grey); letter-spacing: .06em; text-transform: uppercase; }
