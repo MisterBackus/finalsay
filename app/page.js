@@ -53,26 +53,27 @@ export default function Page() {
     <main className="wrap">
       <div className="top">
         <span>finalsay.lol</span>
-        <span>{st ? <><b>{st.replacements}</b> erased · <b>{dollars(st.revenue_cents)}</b> spent</> : "…"}</span>
+        <span className="stats">{st ? <><b>{st.replacements}</b> erased · <b>{dollars(st.revenue_cents)}</b> spent</> : "…"}</span>
       </div>
+      <div className="tag">One sentence. Pay to erase it.</div>
 
       <p className="say">
         {st ? st.text : "…"}
       </p>
       {st && st.link && <div className="linkline"><a href={st.link} rel="nofollow noopener ugc" target="_blank">{new URL(st.link).hostname.replace(/^www\./, "")} ↗</a></div>}
-      {st && <span className="stamp">{st.paid_cents ? "Cost " + dollars(st.paid_cents) : "Free. For now."}</span>}
+      {st && <span className="stamp">{st.paid_cents ? "Someone paid " + dollars(st.paid_cents) + " to say this" : "Free. For now."}</span>}
       {st && st.paid_cents > 0 && <span className="alive">alive {lasted(Date.now() - st.set_at)}</span>}
       {locked && <div className="lock">Locked. Nobody can replace this for {left(st.held_until)}.</div>}
 
       <div className="form">
-        <label htmlFor="t">Your sentence</label>
+        <label htmlFor="t">Your sentence (until someone erases you)</label>
         <textarea id="t" rows={3} value={text} onChange={(e) => setText(e.target.value)} placeholder="Say it." maxLength={MAX_CHARS + 40} />
         <div className={"count" + (over ? " over" : "")}>{text.length}/{MAX_CHARS}</div>
         <label htmlFor="l">Link (optional)</label>
         <input id="l" value={link} onChange={(e) => setLink(e.target.value)} placeholder="https://" inputMode="url" />
         <div className="row">
-          <button className="btn" disabled={!canPay} onClick={() => pay(false)}>Replace it · {dollars(price)}</button>
-          <button className="btn alt" disabled={!canPay} onClick={() => pay(true)}>Replace + lock 1h · {dollars(price * HOLD_MULTIPLIER)}</button>
+          <button className="btn" disabled={!canPay} onClick={() => pay(false)}>Erase this · {dollars(price)}</button>
+          <button className="btn alt" disabled={!canPay} onClick={() => pay(true)}>Erase + lock 1h · {dollars(price * HOLD_MULTIPLIER)}</button>
         </div>
         {err && <div className="err">{err}</div>}
         <div className="hint">Every replacement raises the price. If someone pays before you, you're refunded. No edits, no refunds once you're up. Anything illegal or aimed at a private person gets removed without refund.</div>
